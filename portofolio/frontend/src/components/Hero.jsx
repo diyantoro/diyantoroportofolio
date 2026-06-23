@@ -72,11 +72,83 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-gray-500 rounded-full flex justify-center">
-          <div className="w-1.5 h-3 bg-primary rounded-full mt-2 animate-pulse" />
-        </div>
-      </div>
+      <motion.div
+        className="absolute bottom-4 left-1/2 -translate-x-1/2"
+        animate={{ y: [0, -4, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <svg width="64" height="64" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="12" y="5" width="76" height="50" rx="5" fill="#222" />
+          <rect x="15" y="8" width="70" height="40" rx="2" fill="#0F0F23" />
+
+          <line x1="20" y1="14" x2="80" y2="14" stroke="#c084fc" strokeWidth="1.5" opacity="0.7" />
+          <line x1="20" y1="19" x2="58" y2="19" stroke="#60a5fa" strokeWidth="1.5" opacity="0.6" />
+          <line x1="20" y1="24" x2="72" y2="24" stroke="#fbbf24" strokeWidth="1.5" opacity="0.5" />
+          <line x1="20" y1="29" x2="55" y2="29" stroke="#34d399" strokeWidth="1.5" opacity="0.5" />
+          <line x1="20" y1="34" x2="65" y2="34" stroke="#f87171" strokeWidth="1.5" opacity="0.4" />
+          <line x1="20" y1="39" x2="50" y2="39" stroke="#60a5fa" strokeWidth="1.5" opacity="0.3" />
+
+          <motion.text
+            x="50" y="32" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#fbbf24" opacity="0.9"
+            animate={{ opacity: [0.9, 0.15, 0.9] }}
+            transition={{ duration: 1.2, repeat: Infinity }}
+          >{`</>`}</motion.text>
+
+          <path d="M8 55 L50 55 L50 60 L8 60 Z" fill="#3D3D3D" />
+          <path d="M50 55 L92 55 L92 60 L50 60 Z" fill="#3D3D3D" />
+          <rect x="8" y="55" width="84" height="5" rx="1" fill="#3D3D3D" />
+          <rect x="42" y="60" width="16" height="3" rx="1" fill="#333" />
+
+          <rect x="14" y="56" width="72" height="3" rx="0.5" fill="#555" />
+          <rect x="18" y="56.5" width="4" height="2" rx="0.3" fill="#777" />
+          <rect x="24" y="56.5" width="4" height="2" rx="0.3" fill="#777" />
+          <rect x="30" y="56.5" width="4" height="2" rx="0.3" fill="#777" />
+          <rect x="36" y="56.5" width="4" height="2" rx="0.3" fill="#777" />
+          <rect x="42" y="56.5" width="4" height="2" rx="0.3" fill="#777" />
+          <rect x="48" y="56.5" width="4" height="2" rx="0.3" fill="#777" />
+          <rect x="54" y="56.5" width="4" height="2" rx="0.3" fill="#777" />
+          <rect x="60" y="56.5" width="4" height="2" rx="0.3" fill="#777" />
+          <rect x="66" y="56.5" width="4" height="2" rx="0.3" fill="#777" />
+          <rect x="72" y="56.5" width="4" height="2" rx="0.3" fill="#777" />
+          <rect x="78" y="56.5" width="4" height="2" rx="0.3" fill="#777" />
+
+          <motion.rect
+            x="20" y="57" width="3" height="1.5" rx="0.3" fill="#60a5fa"
+            animate={{ opacity: [1, 0.1, 1] }}
+            transition={{ duration: 0.2, repeat: Infinity }}
+          />
+          <motion.rect
+            x="28" y="57" width="3" height="1.5" rx="0.3" fill="#60a5fa"
+            animate={{ opacity: [0.1, 1, 0.1] }}
+            transition={{ duration: 0.2, repeat: Infinity, delay: 0.1 }}
+          />
+          <motion.rect
+            x="36" y="57" width="3" height="1.5" rx="0.3" fill="#60a5fa"
+            animate={{ opacity: [1, 0.1, 1] }}
+            transition={{ duration: 0.2, repeat: Infinity, delay: 0.05 }}
+          />
+          <motion.rect
+            x="44" y="57" width="3" height="1.5" rx="0.3" fill="#60a5fa"
+            animate={{ opacity: [0.1, 1, 0.1] }}
+            transition={{ duration: 0.2, repeat: Infinity, delay: 0.15 }}
+          />
+          <motion.rect
+            x="52" y="57" width="3" height="1.5" rx="0.3" fill="#60a5fa"
+            animate={{ opacity: [1, 0.1, 1] }}
+            transition={{ duration: 0.2, repeat: Infinity, delay: 0.07 }}
+          />
+          <motion.rect
+            x="60" y="57" width="3" height="1.5" rx="0.3" fill="#60a5fa"
+            animate={{ opacity: [0.1, 1, 0.1] }}
+            transition={{ duration: 0.2, repeat: Infinity, delay: 0.12 }}
+          />
+          <motion.rect
+            x="68" y="57" width="3" height="1.5" rx="0.3" fill="#60a5fa"
+            animate={{ opacity: [1, 0.1, 1] }}
+            transition={{ duration: 0.2, repeat: Infinity, delay: 0.03 }}
+          />
+        </svg>
+      </motion.div>
     </section>
   )
 }
