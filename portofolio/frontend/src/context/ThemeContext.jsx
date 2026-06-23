@@ -16,15 +16,11 @@ function applyTheme(dark) {
 }
 
 export const ThemeProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(true)
+  const [darkMode, setDarkMode] = useState(false)
 
   useEffect(() => {
     applyTheme(darkMode)
   }, [darkMode])
-
-  useEffect(() => {
-    applyTheme(true)
-  }, [])
 
   const toggleDarkMode = () => setDarkMode(prev => !prev)
 
