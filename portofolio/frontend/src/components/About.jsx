@@ -27,7 +27,7 @@ const aboutItems = [
 
 export default function About() {
   return (
-    <section id="about" className="py-20 relative">
+    <section id="about" className="py-16 md:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,7 +49,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-card rounded-2xl p-6"
+                className="glass-card rounded-2xl p-4 sm:p-6"
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-primary/10 rounded-xl text-primary">
@@ -70,7 +70,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-8 glass-card rounded-2xl p-6"
+          className="mt-6 glass-card rounded-2xl p-4 sm:p-6"
         >
           <div className="flex items-start gap-4">
             <div className="p-3 bg-primary/10 rounded-xl text-primary">

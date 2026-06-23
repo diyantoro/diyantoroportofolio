@@ -7,6 +7,7 @@ const certifications = [
   { title: 'Belajar Penggunaan Generative AI', issuer: 'Dicoding', category: 'Artificial Intelligence', file: '/sertifikat_generatifai.pdf' },
   { title: 'Webinar Tren Kejahatan Siber: Mengenal Dark Web untuk Pemula', issuer: 'Institut Teknologi Tangerang', category: 'Cybersecurity', file: '/SERTIFDARKWEB.PNG' },
   { title: 'Webinar Nasional Himpunan Mahasiswa Teknologi Informasi UMPWR X PERMIKOMNAS JATENG - Digital Frontier: Mengoptimalkan Teknologi AI dan Platform untuk Ekspansi Pasar Produk Ekonomi Kreatif', issuer: 'HIMATIF UMPWR & PERMIKOMNAS JATENG', category: 'Web Development', file: '/Diyantoro_sertif_jateng.pdf' },
+  { title: 'Memulai Pemrograman dengan Python', issuer: 'Dicoding', category: 'Backend Development', file: '/sertifikat_python_dicoding.pdf' },
 ]
 
 const categories = ['All', 'Web Development', 'Backend Development', 'Machine Learning', 'Artificial Intelligence', 'AWS Cloud', 'Database', 'Cybersecurity']
@@ -16,7 +17,7 @@ export default function Certifications() {
   const filtered = filter === 'All' ? certifications : certifications.filter(c => c.category === filter)
 
   return (
-    <section className="py-20 relative">
+    <section className="py-16 md:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -53,7 +54,7 @@ export default function Certifications() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
               viewport={{ once: true }}
-              className="glass-card rounded-2xl p-6 text-center group"
+              className="glass-card rounded-2xl p-4 sm:p-6 text-center group"
             >
               <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                 <FiAward size={28} />

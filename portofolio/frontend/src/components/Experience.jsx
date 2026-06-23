@@ -41,7 +41,7 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section className="py-20 relative">
+    <section className="py-16 md:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -55,7 +55,7 @@ export default function Experience() {
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-secondary to-transparent" />
+          <div className="absolute left-3 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-secondary to-transparent" />
 
           {experiences.map((exp, i) => {
             const Icon = exp.icon
@@ -66,14 +66,14 @@ export default function Experience() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className={`relative flex flex-col md:flex-row gap-6 mb-10 ${
+                className={`relative flex flex-col md:flex-row gap-4 md:gap-6 mb-8 md:mb-10 ${
                   i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
               >
                 <div className="hidden md:block w-1/2" />
-                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-primary rounded-full -translate-x-1/2 mt-6 border-4 border-dark z-10" />
+                <div className="absolute left-3 md:left-1/2 w-3 h-3 md:w-4 md:h-4 bg-primary rounded-full -translate-x-1/2 mt-5 md:mt-6 border-4 border-dark z-10" />
                 <div className={`md:w-1/2 ${i % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                  <div className="glass-card rounded-2xl p-6 ml-10 md:ml-0">
+                  <div className="glass-card rounded-2xl p-4 sm:p-6 ml-8 md:ml-0">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="p-2 bg-primary/10 rounded-lg text-primary">
                         <Icon size={20} />

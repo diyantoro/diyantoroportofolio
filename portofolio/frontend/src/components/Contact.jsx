@@ -22,7 +22,7 @@ export default function Contact() {
   }
 
   return (
-    <section className="py-20 relative">
+    <section className="py-16 md:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -42,7 +42,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="lg:col-span-2"
           >
-            <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8 space-y-5">
+            <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-5">
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-sm font-medium mb-2">Nama</label>
@@ -83,30 +83,30 @@ export default function Contact() {
             transition={{ delay: 0.2 }}
             className="space-y-4"
           >
-            <div className="glass-card rounded-2xl p-6">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-primary/10 rounded-xl text-primary"><FiMail size={20} /></div>
+            <div className="glass-card rounded-2xl p-4 sm:p-6">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div className="p-2.5 sm:p-3 bg-primary/10 rounded-xl text-primary"><FiMail size={18} /></div>
                 <div>
                   <h4 className="text-sm font-medium mb-1">Email</h4>
-                  <p className="text-sm text-muted">diyantoro@email.com</p>
+                  <p className="text-xs sm:text-sm text-muted">diyantoro@email.com</p>
                 </div>
               </div>
             </div>
-            <div className="glass-card rounded-2xl p-6">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-primary/10 rounded-xl text-primary"><FiMapPin size={20} /></div>
+            <div className="glass-card rounded-2xl p-4 sm:p-6">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div className="p-2.5 sm:p-3 bg-primary/10 rounded-xl text-primary"><FiMapPin size={18} /></div>
                 <div>
                   <h4 className="text-sm font-medium mb-1">Lokasi</h4>
-                  <p className="text-sm text-muted">Indonesia</p>
+                  <p className="text-xs sm:text-sm text-muted">Indonesia</p>
                 </div>
               </div>
             </div>
-            <div className="glass-card rounded-2xl p-6">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-primary/10 rounded-xl text-primary"><FiPhone size={20} /></div>
+            <div className="glass-card rounded-2xl p-4 sm:p-6">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div className="p-2.5 sm:p-3 bg-primary/10 rounded-xl text-primary"><FiPhone size={18} /></div>
                 <div>
                   <h4 className="text-sm font-medium mb-1">Telepon</h4>
-                  <p className="text-sm text-muted">+62 8xx-xxxx-xxxx</p>
+                  <p className="text-xs sm:text-sm text-muted">+62 8xx-xxxx-xxxx</p>
                 </div>
               </div>
             </div>

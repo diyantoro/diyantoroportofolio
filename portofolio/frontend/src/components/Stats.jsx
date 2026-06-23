@@ -24,7 +24,7 @@ export default function Stats() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="glass-card rounded-2xl p-6 text-center"
+                className="glass-card rounded-2xl p-4 sm:p-6 text-center"
               >
                 <div className="flex justify-center mb-3 text-primary">
                   <Icon size={24} />
@@ -34,7 +34,7 @@ export default function Stats() {
                   whileInView={{ scale: 1 }}
                   transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
                   viewport={{ once: true }}
-                  className="text-3xl font-bold gradient-text mb-1"
+                   className="text-2xl sm:text-3xl font-bold gradient-text mb-1"
                 >
                   {stat.value}
                 </motion.div>

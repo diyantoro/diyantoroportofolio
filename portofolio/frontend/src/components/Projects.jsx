@@ -45,7 +45,7 @@ export default function Projects() {
   const filtered = filter === 'All' ? allProjects : allProjects.filter(p => p.category === filter)
 
   return (
-    <section className="py-20 relative">
+    <section className="py-16 md:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -101,7 +101,7 @@ export default function Projects() {
                     </a>
                   </div>
                 </div>
-                <div className="p-5">
+                <div className="p-4 sm:p-5">
                   <span className="text-xs text-primary font-medium mb-2 block">{project.category}</span>
                   <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
                   <p className="text-sm text-muted mb-4 line-clamp-2">{project.description}</p>

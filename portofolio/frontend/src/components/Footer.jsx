@@ -6,10 +6,10 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="py-12 border-t border-border">
+    <footer className="py-8 sm:py-12 border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
-          <div className="md:col-span-2">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-8">
+          <div className="sm:col-span-2 md:col-span-2">
             <Link to="/" className="text-xl font-bold gradient-text">Diyantoro</Link>
             <p className="text-muted mt-3 text-sm leading-relaxed max-w-md">
               Fullstack Developer & AI Enthusiast. Building modern web applications with cutting-edge technology.

@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -30,7 +30,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-5xl md:text-7xl font-bold mb-4"
+              className="text-4xl sm:text-5xl md:text-7xl font-bold mb-3 md:mb-4"
             >
               <span className="gradient-text">Diyantoro</span>
             </motion.h1>
@@ -60,14 +60,14 @@ export default function Hero() {
               transition={{ delay: 0.6 }}
               className="flex flex-wrap gap-4"
             >
-              <a href="/cvdiyan.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 rounded-xl font-medium transition-all hover:shadow-lg hover:shadow-primary/25">
-                <FiExternalLink size={18} /> View CV
+              <a href="/cvdiyan.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 bg-primary hover:bg-primary/90 rounded-xl font-medium text-sm sm:text-base transition-all hover:shadow-lg hover:shadow-primary/25">
+                <FiExternalLink size={16} /> View CV
               </a>
-              <Link to="/projects" className="inline-flex items-center gap-2 px-6 py-3 bg-card hover:bg-hover rounded-xl font-medium transition-all border border-border">
-                <FiExternalLink size={18} /> View Projects
+              <Link to="/projects" className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 bg-card hover:bg-hover rounded-xl font-medium text-sm sm:text-base transition-all border border-border">
+                <FiExternalLink size={16} /> View Projects
               </Link>
-              <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-card hover:bg-hover rounded-xl font-medium transition-all border border-border">
-                Contact Me <FiArrowRight size={18} />
+              <Link to="/contact" className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 bg-card hover:bg-hover rounded-xl font-medium text-sm sm:text-base transition-all border border-border">
+                Contact Me <FiArrowRight size={16} />
               </Link>
             </motion.div>
           </motion.div>
@@ -83,8 +83,8 @@ export default function Hero() {
                 <div className="w-full h-full rounded-2xl bg-dark flex items-center justify-center overflow-hidden">
                   <div className="text-center">
                     <div className="text-6xl mb-4">&#x1F9D1;&#x200D;&#x1F4BB;</div>
-                    <div className="text-2xl font-bold gradient-text">Diyantoro</div>
-                    <div className="text-muted mt-2">Fullstack Developer</div>
+                    <div className="text-2xl font-bold text-white">Diyantoro</div>
+                    <div className="text-white/70 mt-2">Fullstack Developer</div>
                   </div>
                 </div>
               </div>

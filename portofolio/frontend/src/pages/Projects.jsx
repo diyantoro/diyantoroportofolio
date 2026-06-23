@@ -103,7 +103,7 @@ export default function Projects() {
                     </a>
                   </div>
                 </div>
-                <div className="p-5">
+                <div className="p-4 sm:p-5">
                   <span className="text-xs text-primary font-medium mb-2 block">{project.category}</span>
                   <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
                   <p className="text-sm text-muted mb-4 line-clamp-2">{project.description}</p>
