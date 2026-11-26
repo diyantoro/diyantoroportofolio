@@ -68,6 +68,17 @@ npm run build
 
 This runs `tsc --noEmit` then `vite build`. The output is in `frontend/dist`.
 
+## Vercel deployment
+
+In the Vercel project settings, set **Root Directory** to `frontend` (the old `portofolio/frontend` path no longer exists). Use the Vite preset:
+
+- Build Command: `npm run build`
+- Output Directory: `dist`
+
+`frontend/vercel.json` adds the SPA fallback so direct URLs such as `/projects` do not return 404.
+
+Set the environment variable `VITE_API_URL` to a publicly reachable API base, for example `https://api.example.com/api`. If it is empty, the app falls back to same-origin `/api`, which only works when a reverse proxy is configured. The Go API must be deployed separately; the contact form cannot work without it.
+
 ## Docker
 
 The root `Dockerfile` builds the frontend image (React build + nginx) from the repository root:
