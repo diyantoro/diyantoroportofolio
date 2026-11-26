@@ -1,11 +1,10 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { FiCode, FiServer, FiDatabase, FiCloud, FiPenTool } from 'react-icons/fi'
 
 const stats = [
-  { icon: FiCode, value: '4', label: 'Projects Completed' },
+  { icon: FiCode, value: '7', label: 'Projects Completed' },
   { icon: FiServer, value: '6', label: 'Technologies Mastered' },
-  { icon: FiDatabase, value: '0', label: 'AI Projects' },
+  { icon: FiDatabase, value: '1', label: 'AI Projects' },
   { icon: FiCloud, value: '0', label: 'Cloud Deployments' },
   { icon: FiPenTool, value: '1', label: 'UI/UX Projects' },
 ]
@@ -18,18 +17,18 @@ export default function Stats() {
           {stats.map((stat, i) => {
             const Icon = stat.icon
             return (
-              <motion.div
+              <m.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="glass-card rounded-2xl p-4 sm:p-6 text-center"
+                className="glass-card p-5 sm:p-6 text-center"
               >
                 <div className="flex justify-center mb-3 text-primary">
                   <Icon size={24} />
                 </div>
-                <motion.div
+                <m.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
@@ -37,9 +36,9 @@ export default function Stats() {
                    className="text-2xl sm:text-3xl font-bold gradient-text mb-1"
                 >
                   {stat.value}
-                </motion.div>
+                </m.div>
                 <div className="text-sm text-muted">{stat.label}</div>
-              </motion.div>
+              </m.div>
             )
           })}
         </div>

@@ -2,17 +2,526 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Portfolio Diyantoro - Fullstack Developer, Backend Engineer, AI & Machine Learning Enthusiast" />
     <meta name="keywords" content="portfolio, fullstack developer, backend engineer, AI, machine learning, react, golang" />
+    <meta name="theme-color" content="#0F172A" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Diyantoro | Fullstack Developer & AI Enthusiast" />
+    <meta property="og:description" content="Portfolio Diyantoro - Fullstack Developer, Backend Engineer, AI & Machine Learning Enthusiast." />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>Diyantoro | Portfolio</title>
+
+    <script>
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          var theme = stored === 'dark' || stored === 'light'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light'
+          document.documentElement.classList.toggle('dark', theme === 'dark')
+          document.documentElement.style.colorScheme = theme
+        } catch (e) {}
+      })()
+    </script>
+
+    <style>
+      html.preloading {
+        overflow: hidden;
+      }
+
+      #app-preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: #f8fafc;
+        font-family: Inter, system-ui, -apple-system, sans-serif;
+        isolation: isolate;
+        transition: opacity 0.55s ease, visibility 0.55s ease, transform 0.55s ease;
+      }
+
+      html.dark #app-preloader {
+        background: #0f172a;
+      }
+
+      #app-preloader.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: scale(1.04);
+      }
+
+      /* Soft animated backdrop */
+      .preloader-bg {
+        position: absolute;
+        inset: -20%;
+        z-index: -2;
+        background-image:
+          radial-gradient(circle at 20% 25%, rgba(37, 99, 235, 0.13), transparent 38%),
+          radial-gradient(circle at 80% 75%, rgba(96, 165, 250, 0.12), transparent 40%),
+          linear-gradient(rgba(100, 116, 139, 0.07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(100, 116, 139, 0.07) 1px, transparent 1px);
+        background-size: auto, auto, 42px 42px, 42px 42px;
+        animation: preloader-drift 14s ease-in-out infinite alternate;
+      }
+
+      .preloader-orb {
+        position: absolute;
+        z-index: -1;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        filter: blur(70px);
+        opacity: 0.35;
+        animation: preloader-float 6s ease-in-out infinite alternate;
+      }
+
+      .preloader-orb--one {
+        top: 12%;
+        left: 12%;
+        background: #2563eb;
+      }
+
+      .preloader-orb--two {
+        right: 10%;
+        bottom: 8%;
+        background: #60a5fa;
+        animation-delay: -3s;
+      }
+
+      .preloader-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 24px;
+        text-align: center;
+      }
+
+      .preloader-inner > * {
+        animation: preloader-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+
+      .preloader-inner > :nth-child(1) { animation-delay: 0.05s; }
+      .preloader-inner > :nth-child(2) { animation-delay: 0.15s; }
+      .preloader-inner > :nth-child(3) { animation-delay: 0.25s; }
+      .preloader-inner > :nth-child(4) { animation-delay: 0.35s; }
+      .preloader-inner > :nth-child(5) { animation-delay: 0.45s; }
+
+      /* Orbiting brand mark */
+      .preloader-orbit {
+        position: relative;
+        width: 108px;
+        height: 108px;
+        margin-bottom: 6px;
+      }
+
+      .preloader-ring {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: conic-gradient(from 0deg, transparent 0 50%, #2563eb 72%, #60a5fa 90%, transparent 100%);
+        -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+        mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+        animation: preloader-spin 1.8s linear infinite;
+      }
+
+      .preloader-ring--inner {
+        inset: 9px;
+        border: 1px dashed rgba(37, 99, 235, 0.35);
+        background: none;
+        -webkit-mask: none;
+        mask: none;
+        animation: preloader-spin-reverse 9s linear infinite;
+      }
+
+      html.dark .preloader-ring--inner {
+        border-color: rgba(96, 165, 250, 0.35);
+      }
+
+      .preloader-satellite {
+        position: absolute;
+        inset: 0;
+        animation: preloader-spin 1.8s linear infinite;
+      }
+
+      .preloader-satellite::after {
+        content: '';
+        position: absolute;
+        top: -3px;
+        left: calc(50% - 3px);
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #60a5fa;
+        box-shadow: 0 0 12px 2px rgba(96, 165, 250, 0.8);
+      }
+
+      .preloader-core {
+        position: absolute;
+        inset: 16px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 10px 35px rgba(37, 99, 235, 0.18);
+        animation: preloader-breathe 2.4s ease-in-out infinite;
+      }
+
+      html.dark .preloader-core {
+        background: #1e293b;
+        box-shadow: 0 10px 35px rgba(37, 99, 235, 0.35);
+      }
+
+      .preloader-core img {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+      }
+
+      .preloader-name {
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #0f172a;
+      }
+
+      html.dark .preloader-name {
+        color: #f8fafc;
+      }
+
+      .preloader-kicker {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: #2563eb;
+      }
+
+      html.dark .preloader-kicker {
+        color: #60a5fa;
+      }
+
+      .preloader-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 18px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #475569;
+      }
+
+      html.dark .preloader-status {
+        color: #cbd5e1;
+      }
+
+      .preloader-status-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #2563eb;
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5);
+        animation: preloader-ping 1.4s ease-out infinite;
+      }
+
+      #preloader-status-text {
+        animation: preloader-text-in 0.35s ease both;
+      }
+
+      .preloader-track {
+        position: relative;
+        width: 240px;
+        max-width: 70vw;
+        height: 5px;
+        border-radius: 999px;
+        background: rgba(100, 116, 139, 0.22);
+        overflow: hidden;
+      }
+
+      #preloader-bar {
+        display: block;
+        position: relative;
+        z-index: 1;
+        width: 0;
+        height: 100%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #2563eb, #60a5fa, #2563eb);
+        background-size: 200% 100%;
+        box-shadow: 0 0 12px rgba(37, 99, 235, 0.5);
+        transition: width 0.25s ease;
+        animation: preloader-gradient 2.4s linear infinite;
+      }
+
+      .preloader-shimmer {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+        transform: translateX(-100%);
+        animation: preloader-shimmer 1.6s ease-in-out infinite;
+      }
+
+      .preloader-meta {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        width: 240px;
+        max-width: 70vw;
+        color: #64748b;
+      }
+
+      #preloader-percent {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        font-variant-numeric: tabular-nums;
+        color: #2563eb;
+      }
+
+      html.dark #preloader-percent {
+        color: #60a5fa;
+      }
+
+      .preloader-hint {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+      }
+
+      html.dark .preloader-meta {
+        color: #94a3b8;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @keyframes preloader-spin {
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes preloader-spin-reverse {
+        to { transform: rotate(-360deg); }
+      }
+
+      @keyframes preloader-breathe {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+
+      @keyframes preloader-drift {
+        from { transform: translate3d(-2%, -1%, 0) scale(1); }
+        to { transform: translate3d(2%, 1%, 0) scale(1.08); }
+      }
+
+      @keyframes preloader-float {
+        from { transform: translate3d(0, 0, 0); }
+        to { transform: translate3d(18px, -24px, 0); }
+      }
+
+      @keyframes preloader-rise {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes preloader-ping {
+        0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5); }
+        70%, 100% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
+      }
+
+      @keyframes preloader-text-in {
+        from { opacity: 0; transform: translateY(4px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes preloader-gradient {
+        to { background-position: 200% 0; }
+      }
+
+      @keyframes preloader-shimmer {
+        0%, 20% { transform: translateX(-100%); }
+        80%, 100% { transform: translateX(100%); }
+      }
+
+      @media (max-width: 480px) {
+        .preloader-orbit { width: 92px; height: 92px; }
+        .preloader-name { font-size: 17px; letter-spacing: 0.22em; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .preloader-bg,
+        .preloader-orb,
+        .preloader-ring,
+        .preloader-ring--inner,
+        .preloader-satellite,
+        .preloader-core,
+        .preloader-inner > *,
+        .preloader-status-dot,
+        #preloader-status-text,
+        #preloader-bar,
+        .preloader-shimmer {
+          animation: none !important;
+        }
+        #app-preloader {
+          transition: none;
+        }
+        #app-preloader.is-hidden {
+          transform: none;
+        }
+      }
+    </style>
   </head>
   <body class="bg-dark text-text">
+    <div id="app-preloader" role="status" aria-live="polite" aria-label="Loading page">
+      <div class="preloader-bg" aria-hidden="true"></div>
+      <div class="preloader-orb preloader-orb--one" aria-hidden="true"></div>
+      <div class="preloader-orb preloader-orb--two" aria-hidden="true"></div>
+      <div class="preloader-inner">
+        <div class="preloader-orbit" aria-hidden="true">
+          <span class="preloader-ring"></span>
+          <span class="preloader-ring preloader-ring--inner"></span>
+          <span class="preloader-satellite"></span>
+          <span class="preloader-core">
+            <img src="/favicon-64.png" alt="" width="48" height="48" />
+          </span>
+        </div>
+        <div class="preloader-name" aria-hidden="true">
+          <span class="preloader-kicker">Welcome to my portfolio</span>
+          Diyantoro
+        </div>
+        <div class="preloader-status" aria-hidden="true">
+          <span class="preloader-status-dot"></span>
+          <span id="preloader-status-text">Preparing workspace</span>
+        </div>
+        <div class="preloader-track" aria-hidden="true">
+          <span id="preloader-bar"></span>
+          <span class="preloader-shimmer"></span>
+        </div>
+        <div class="preloader-meta" aria-hidden="true">
+          <span id="preloader-percent">0%</span>
+          <span class="preloader-hint">Crafting something great</span>
+        </div>
+        <span class="sr-only">Loading…</span>
+      </div>
+    </div>
+
+    <noscript>
+      <style>
+        #app-preloader { display: none; }
+      </style>
+    </noscript>
+
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <script>
+      ;(function () {
+        var preloader = document.getElementById('app-preloader')
+        if (!preloader) return
+
+        var bar = document.getElementById('preloader-bar')
+        var percent = document.getElementById('preloader-percent')
+        var status = document.getElementById('preloader-status-text')
+        var progress = 0
+        var finished = false
+        var currentPhase = ''
+
+        var phases = [
+          { at: 0, label: 'Preparing workspace' },
+          { at: 30, label: 'Loading components' },
+          { at: 60, label: 'Polishing the details' },
+          { at: 88, label: 'Almost ready' },
+          { at: 100, label: 'Welcome aboard' },
+        ]
+
+        document.documentElement.classList.add('preloading')
+
+        function setPhase(value) {
+          var next = phases[0].label
+          for (var i = 0; i < phases.length; i++) {
+            if (value >= phases[i].at) next = phases[i].label
+          }
+          if (!status || next === currentPhase) return
+          currentPhase = next
+          status.textContent = next
+          status.style.animation = 'none'
+          void status.offsetWidth
+          status.style.animation = ''
+        }
+
+        function render(value) {
+          progress = Math.min(100, Math.max(progress, value))
+          if (bar) bar.style.width = progress + '%'
+          if (percent) percent.textContent = Math.round(progress) + '%'
+          setPhase(progress)
+        }
+
+        var interval = setInterval(function () {
+          if (finished) return
+          // Slowly approach 90% until assets finish loading
+          render(progress + Math.max(1, (90 - progress) * 0.12))
+        }, 120)
+
+        function finish() {
+          if (finished) return
+          finished = true
+          clearInterval(interval)
+          render(100)
+
+          setTimeout(function () {
+            preloader.classList.add('is-hidden')
+            document.documentElement.classList.remove('preloading')
+            setTimeout(function () {
+              preloader.remove()
+            }, 700)
+          }, 350)
+        }
+
+        var minimumDelay = new Promise(function (resolve) {
+          setTimeout(resolve, 800)
+        })
+
+        var fontsReady =
+          document.fonts && document.fonts.ready
+            ? document.fonts.ready.catch(function () {})
+            : Promise.resolve()
+
+        var windowLoaded = new Promise(function (resolve) {
+          if (document.readyState === 'complete') resolve()
+          else window.addEventListener('load', resolve, { once: true })
+        })
+
+        Promise.all([minimumDelay, fontsReady, windowLoaded]).then(finish)
+
+        // Safety net: never hold the page for more than 4 seconds
+        setTimeout(finish, 4000)
+      })()
+    </script>
   </body>
 </html>

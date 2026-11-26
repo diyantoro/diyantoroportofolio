@@ -1,27 +1,26 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { FiUser, FiBook, FiHeart, FiTarget } from 'react-icons/fi'
 
 const aboutItems = [
   {
     icon: FiUser,
-    title: 'Biodata Singkat',
-    content: 'Saya adalah seorang Fullstack Developer dan Backend Engineer dengan pengalaman dalam pengembangan aplikasi web modern. Berfokus pada teknologi React, Golang, dan AI/ML.',
+    title: 'Short Bio',
+    content: "I'm a Fullstack Developer and Backend Engineer who enjoys turning ideas into fast, clean, and scalable web applications. With React and Golang as my core stack, I also explore AI and Machine Learning to build smarter products.",
   },
   {
     icon: FiBook,
-    title: 'Pendidikan',
-    content: 'Mahasiswa Informatika Universitas Teknologi Digital Indonesia yang fokus pada pengembangan perangkat lunak dan kecerdasan buatan.',
+    title: 'Education',
+    content: 'An Informatics student at Universitas Teknologi Digital Indonesia, focusing on software development and artificial intelligence.',
   },
   {
     icon: FiHeart,
-    title: 'Minat Teknologi',
-    content: 'Web Development, Backend Engineering, Artificial Intelligence, Machine Learning, Cloud Computing (AWS), dan DevOps.',
+    title: 'Technology Interests',
+    content: 'Web Development, Backend Engineering, AI and Machine Learning, Cloud Computing (AWS), and DevOps.',
   },
   {
     icon: FiTarget,
-    title: 'Tujuan Karier',
-    content: 'Menjadi seorang Software Engineer yang ahli dalam membangun aplikasi scalable menggunakan teknologi modern dan AI.',
+    title: 'Career Goal',
+    content: 'To become a Software Engineer who builds scalable applications with modern technology and AI, and creates real impact for users.',
   },
 ]
 
@@ -29,7 +28,7 @@ export default function About() {
   return (
     <section id="about" className="py-16 md:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -37,19 +36,19 @@ export default function About() {
         >
           <h2 className="section-title">About <span className="gradient-text">Me</span></h2>
           <p className="section-subtitle">Get to know me better</p>
-        </motion.div>
+        </m.div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {aboutItems.map((item, i) => {
             const Icon = item.icon
             return (
-              <motion.div
+              <m.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-card rounded-2xl p-4 sm:p-6"
+                className="glass-card p-5 sm:p-6"
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-primary/10 rounded-xl text-primary">
@@ -60,33 +59,33 @@ export default function About() {
                     <p className="text-muted leading-relaxed">{item.content}</p>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             )
           })}
         </div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-6 glass-card rounded-2xl p-4 sm:p-6"
+          className="mt-6 glass-card p-5 sm:p-6"
         >
           <div className="flex items-start gap-4">
             <div className="p-3 bg-primary/10 rounded-xl text-primary">
               <FiUser size={24} />
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-2">Pengalaman Organisasi</h3>
+              <h3 className="text-lg font-semibold mb-2">Organizational Experience</h3>
               <ul className="text-muted leading-relaxed space-y-2 list-disc list-inside">
-                <li>Aktif dalam organisasi kemahasiswaan bidang teknologi</li>
-                <li>Terlibat dalam komunitas developer dan AI</li>
-                <li>Mengikuti berbagai workshop dan seminar teknologi</li>
-                <li>Kontributor open source project</li>
+                <li>Active in student organizations focused on technology</li>
+                <li>Involved in developer and AI communities</li>
+                <li>Attended various technology workshops and seminars</li>
+                <li>Contributor to open-source projects</li>
               </ul>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

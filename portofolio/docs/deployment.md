@@ -47,15 +47,24 @@ cd frontend
 # Install dependencies
 npm install
 
+# Copy environment file
+cp .env.example .env
+
 # Run development server
 npm run dev
+
+# Type-check + production build
+npm run build
 ```
+
+> Frontend ditulis dengan **React + TypeScript**. `npm run build` menjalankan
+> `tsc --noEmit` terlebih dahulu, jadi error tipe akan menggagalkan build.
 
 ### 5. Access Application
 - Frontend: http://localhost:5173
 - Backend API: http://localhost:8080/api
-- Admin Dashboard: http://localhost:5173/admin/login
-- Default Admin: `admin@email.com` / `admin123`
+- Admin Dashboard: belum diimplementasikan di frontend
+- Default Admin (API): `admin@email.com` / `admin123`
 
 ## Docker Deployment
 
@@ -74,7 +83,7 @@ docker-compose down
 ### Access
 - Frontend: http://localhost
 - Backend API: http://localhost:8080/api
-- Admin Dashboard: http://localhost/admin/login
+- Admin Dashboard: belum diimplementasikan di frontend
 
 ## AWS EC2 Deployment
 
@@ -156,13 +165,21 @@ AWS_SECRET_KEY=your-secret-key
 ## Project Structure
 ```
 portofolio/
-├── frontend/              # React + Vite + Tailwind CSS
+├── frontend/              # React + TypeScript + Vite + Tailwind CSS
 │   ├── src/
 │   │   ├── components/   # Reusable components
 │   │   ├── pages/        # Page components
-│   │   ├── context/      # React context
-│   │   ├── utils/        # Utilities
-│   │   └── assets/       # Static assets
+│   │   ├── context/      # React context (theme)
+│   │   ├── data/         # Static fallback data
+│   │   ├── hooks/        # Custom hooks (data + document title)
+│   │   ├── types/        # Shared TypeScript types
+│   │   ├── utils/        # API client & helpers
+│   │   └── index.css
+│   ├── public/            # Static files (PDF, images, favicon)
+│   ├── dist/              # Generated build output (jangan diedit manual)
+│   ├── index.html
+│   ├── tsconfig.json
+│   ├── vite.config.ts
 │   ├── Dockerfile
 │   └── package.json
 ├── backend/               # Golang + Gin Framework
@@ -204,7 +221,8 @@ portofolio/
 ### Frontend (.env)
 | Variable | Description | Default |
 |----------|-------------|---------|
-| VITE_API_URL | Backend API URL | http://localhost:8080/api |
+| VITE_API_TARGET | Origin backend untuk proxy dev server | http://localhost:8080 |
+| VITE_USE_API | Ambil data project dari API (fallback ke data statis) | false |
 
 ## Default Admin Account
 - Email: `admin@email.com`
@@ -232,7 +250,7 @@ cat backend/.env
 # Check if backend is running
 curl http://localhost:8080/api/projects
 
-# Verify VITE_API_URL in frontend/.env
+# Verify VITE_API_TARGET in frontend/.env (default http://localhost:8080)
 ```
 
 ### Docker container exits immediately

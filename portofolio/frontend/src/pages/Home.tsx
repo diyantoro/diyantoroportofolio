@@ -1,4 +1,4 @@
-import React from 'react'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import Hero from '../components/Hero'
 import About from '../components/About'
 import Stats from '../components/Stats'
@@ -9,6 +9,8 @@ import Certifications from '../components/Certifications'
 import ContactSection from '../components/Contact'
 
 export default function Home() {
+  useDocumentTitle()
+
   return (
     <>
       <Hero />

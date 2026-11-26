@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { FiGithub, FiLinkedin, FiMail, FiInstagram, FiHeart } from 'react-icons/fi'
 
@@ -16,20 +15,24 @@ export default function Footer() {
             </p>
             <div className="flex gap-3 mt-4">
               <a href="https://github.com/diyantoro" target="_blank" rel="noopener noreferrer"
+                aria-label="GitHub Diyantoro"
                 className="p-2 bg-card rounded-lg hover:bg-primary/20 transition-colors text-muted hover:text-primary">
-                <FiGithub size={18} />
+                <FiGithub size={18} aria-hidden="true" />
               </a>
               <a href="https://www.linkedin.com/in/diyan-toro-79466a387" target="_blank" rel="noopener noreferrer"
+                aria-label="LinkedIn Diyantoro"
                 className="p-2 bg-card rounded-lg hover:bg-primary/20 transition-colors text-muted hover:text-primary">
-                <FiLinkedin size={18} />
+                <FiLinkedin size={18} aria-hidden="true" />
               </a>
               <a href="https://www.instagram.com/_diyyant" target="_blank" rel="noopener noreferrer"
+                aria-label="Instagram Diyantoro"
                 className="p-2 bg-card rounded-lg hover:bg-primary/20 transition-colors text-muted hover:text-primary">
-                <FiInstagram size={18} />
+                <FiInstagram size={18} aria-hidden="true" />
               </a>
               <a href="mailto:diyantoro@email.com"
+                aria-label="Send an email to Diyantoro"
                 className="p-2 bg-card rounded-lg hover:bg-primary/20 transition-colors text-muted hover:text-primary">
-                <FiMail size={18} />
+                <FiMail size={18} aria-hidden="true" />
               </a>
             </div>
           </div>
