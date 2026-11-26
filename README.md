@@ -70,7 +70,7 @@ This runs `tsc --noEmit` then `vite build`. The output is in `frontend/dist`.
 
 ## Vercel deployment
 
-In the Vercel project settings, set **Root Directory** to `frontend` (the old `portofolio/frontend` path no longer exists). Use the Vite preset:
+In Vercel, go to **Project Settings → Build and Deployment → Root Directory** and set it to `frontend` (the old `portofolio/frontend` path no longer exists). Use the Vite preset:
 
 - Build Command: `npm run build`
 - Output Directory: `dist`
